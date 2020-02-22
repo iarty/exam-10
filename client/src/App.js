@@ -7,14 +7,16 @@ import Navigation from "./components/Navigation";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Navigation />
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/news/:id" component={FullNews} />
-        <Route path="/add-news" component={NewsForm} />
-      </Switch>
-    </div>
+      <div className="container mt-3">
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/news/:id" component={FullNews} />
+          <Route path="/add-news" component={NewsForm} />
+        </Switch>
+      </div>
+    </>
   );
 };
 
