@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon } from "mdbreact";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postNews } from "../store/actions/newsActions";
 import { useHistory } from "react-router-dom";
 
 const NewsForm = () => {
   const [formData, setFormData] = useState({ title: "", data: "", image: {} });
-  const error = useSelector(state => state.news.error);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -20,18 +19,6 @@ const NewsForm = () => {
     <MDBContainer>
       <MDBRow>
         <MDBCol md="6" className="m-auto">
-          {error && (
-            <div
-              style={{
-                background: "rgba(193, 66, 66, 0.3)",
-                border: "1px solid red",
-                marginBottom: 5,
-                padding: 10
-              }}
-            >
-              <p>{error}</p>
-            </div>
-          )}
           <form onSubmit={sendData}>
             <p className="h4 text-center mb-4">News creator</p>
             <label htmlFor="defaultFormContactNameEx" className="grey-text">

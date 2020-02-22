@@ -20,7 +20,15 @@ const NewsItem = ({ title, id, image, date }) => {
       <MDBCardBody className="text-secondary">
         <div className="d-flex justify-content-between">
           <div className="d-flex">
-            <img src={image} alt="" style={{ width: 100, height: 100 }} />
+            <img
+              src={
+                image
+                  ? image
+                  : "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTRLFj-KHDTDnmPJZ-fV6s4jMkFlh9SR6jdwSRK9OytVGOvUEZ3"
+              }
+              alt=""
+              style={{ width: 100, height: 100 }}
+            />
             <small className="ml-3 cyan-text">At {localeDate}</small>
           </div>
           <div className="align-self-end">
