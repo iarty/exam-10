@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { getNewsById } from "../store/actions/newsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import CommentItem from "../components/CommentItem";
+import CommentForm from "../components/CommentForm";
 
 const FullNews = () => {
   const dispatch = useDispatch();
@@ -45,6 +47,12 @@ const FullNews = () => {
       )}
       <hr />
       <h3>Comments</h3>
+      <CommentItem />
+      <CommentItem />
+      <CommentItem />
+      <CommentItem />
+      <hr />
+      <CommentForm />
     </>
   );
 };
