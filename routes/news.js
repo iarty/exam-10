@@ -49,6 +49,15 @@ router.post("/news", upload.single("image"), async (req, res) => {
   }
 });
 
-router.delete("/news/:id", async (req, res) => {});
+router.delete("/news/:id", async (req, res) => {
+  try {
+    await mysqlDb
+      .connection()
+      .query("DELETE FROM `news` WHERE id =?", req.params.id);
+    return res.status(200).json("Deleted");
+  } catch (e) {
+    return res.status(500).json({ message: "Something went wrong, try again" });
+  }
+});
 
 module.exports = router;

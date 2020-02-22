@@ -13,9 +13,7 @@ const NewsForm = () => {
   const sendData = async event => {
     event.preventDefault();
     await dispatch(postNews(formData));
-    if (error) {
-      history.push("/");
-    }
+    history.push("/");
   };
 
   return (

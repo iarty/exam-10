@@ -1,8 +1,11 @@
 import React from "react";
 import { MDBCard, MDBCardBody, MDBCardHeader } from "mdbreact";
 import { Link } from "react-router-dom";
+import { deleteNews } from "../store/actions/newsActions";
+import { useDispatch } from "react-redux";
 
 const NewsItem = ({ title, id, image, date }) => {
+  const dispatch = useDispatch();
   const localeDate = new Date(date).toLocaleString("ru", {
     hour: "numeric",
     minute: "numeric",
@@ -10,17 +13,14 @@ const NewsItem = ({ title, id, image, date }) => {
     month: "short",
     day: "numeric"
   });
+
   return (
     <MDBCard border="cyan" className="m-3">
       <MDBCardHeader color="cyan">{title}</MDBCardHeader>
       <MDBCardBody className="text-secondary">
         <div className="d-flex justify-content-between">
           <div className="d-flex">
-            <img
-              src="https://static-cdn.123rf.com/images/v5/index-thumbnail/84170952-b.jpg"
-              alt=""
-              style={{ width: 100, height: 100 }}
-            />
+            <img src={image} alt="" style={{ width: 100, height: 100 }} />
             <small className="ml-3 cyan-text">At {localeDate}</small>
           </div>
           <div className="align-self-end">
@@ -32,6 +32,7 @@ const NewsItem = ({ title, id, image, date }) => {
                 marginRight: 20,
                 cursor: "pointer"
               }}
+              onClick={() => dispatch(deleteNews(id))}
             />
             <Link to={`/news/${id}`}>Read more >>></Link>
           </div>
