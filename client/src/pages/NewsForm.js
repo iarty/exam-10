@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon } from "mdbreact";
+import { useDispatch } from "react-redux";
+import { postNews } from "../store/actions/newsActions";
+import { useHistory } from "react-router-dom";
 
 const NewsForm = () => {
   const [formData, setFormData] = useState({ title: "", data: "", image: {} });
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const sendData = event => {
+  const sendData = async event => {
     event.preventDefault();
-    console.log(formData);
+    await dispatch(postNews(formData));
+    history.push("/");
   };
 
   return (

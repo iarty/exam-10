@@ -8,7 +8,7 @@ import {
   MDBCollapse
 } from "mdbreact";
 
-const Navbar = () => {
+const Navigation = () => {
   return (
     <MDBNavbar color="cyan" dark expand="md">
       <MDBNavbarBrand>
@@ -28,4 +28,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navigation;

@@ -25,7 +25,29 @@ router.get("/news/:id", async (req, res) => {
   }
 });
 
-router.post("/news", upload.single("image"), async (req, res) => {});
+router.post("/news", upload.single("image"), async (req, res) => {
+  try {
+    if (!req.body.title || !req.body.data) {
+      return res.status(400).json({ error: "title or data empty!!!" });
+    }
+
+    if (req.file) {
+      req.body.image = `uploads/${req.file.filename}`;
+    }
+
+    const news = await mysqlDb
+      .connection()
+      .query("INSERT INTO `news` (`title`,`data`,`image`) VALUES" + "(?,?,?)", [
+        req.body.title,
+        req.body.data,
+        req.body.image
+      ]);
+
+    return res.status(201).json({ news: news[0] });
+  } catch (e) {
+    return res.status(500).json({ message: "Something went wrong, try again" });
+  }
+});
 
 router.delete("/news/:id", async (req, res) => {});
 

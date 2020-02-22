@@ -1,11 +1,8 @@
-const initialState = {};
+import { combineReducers } from "redux";
+import { newsReducer } from "./newsReducer";
+import { commentsReducer } from "./commentsReducer";
 
-export const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "typeName":
-      return { ...state };
-
-    default:
-      return state;
-  }
-};
+export const rootReducer = combineReducers({
+  news: newsReducer,
+  comments: commentsReducer
+});

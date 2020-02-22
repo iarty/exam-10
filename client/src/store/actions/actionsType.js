@@ -1,0 +1,3 @@
+export const SET_ERROR_NEWS = "SET_ERROR_NEWS";
+export const SET_LOADING_NEWS = "SET_LOADING_NEWS";
+export const POST_NEWS_SUCCESS = "POST_NEWS_SUCCESS";
